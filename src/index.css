@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* Custom font or overrides can go here later */
+/* body {
+  font-family: 'Inter', sans-serif;
+} */
