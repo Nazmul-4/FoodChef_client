@@ -10,7 +10,7 @@ const Meals = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get('http://localhost:5000/meals')
+        axios.get('https://food-chef-server-three.vercel.app//meals')
             .then(res => {
                 setMeals(res.data);
                 setLoading(false);

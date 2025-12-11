@@ -11,7 +11,7 @@ const MyOrders = () => {
     const { data: orders = [], refetch } = useQuery({
         queryKey: ['myOrders', user?.email],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/orders?email=${user.email}`);
+            const res = await axios.get(`https://food-chef-server-three.vercel.app//orders?email=${user.email}`);
             return res.data;
         }
     });
@@ -26,7 +26,7 @@ const MyOrders = () => {
             confirmButtonText: "Yes, cancel it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/orders/${id}`)
+                axios.delete(`https://food-chef-server-three.vercel.app//orders/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();

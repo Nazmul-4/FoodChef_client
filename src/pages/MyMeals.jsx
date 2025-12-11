@@ -10,7 +10,7 @@ const MyMeals = () => {
 
     const fetchMeals = () => {
         if(user?.email){
-            axios.get(`http://localhost:5000/meals/chef/${user.email}`)
+            axios.get(`https://food-chef-server-three.vercel.app//meals/chef/${user.email}`)
             .then(res => setMeals(res.data));
         }
     }
@@ -30,7 +30,7 @@ const MyMeals = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/meals/${id}`)
+                axios.delete(`https://food-chef-server-three.vercel.app//meals/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             fetchMeals();

@@ -10,7 +10,7 @@ const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/users/admin/${user.email}`);
+            const res = await axios.get(`https://food-chef-server-three.vercel.app//users/admin/${user.email}`);
             return res.data.admin;
         }
     });

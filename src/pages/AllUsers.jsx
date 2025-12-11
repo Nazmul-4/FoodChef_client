@@ -8,7 +8,7 @@ const AllUsers = () => {
 
     // Fetch users when page loads
     const refetch = () => {
-        axios.get('http://localhost:5000/users')
+        axios.get('https://food-chef-server-three.vercel.app//users')
             .then(res => setUsers(res.data));
     }
 
@@ -17,7 +17,7 @@ const AllUsers = () => {
     }, []);
 
     const handleMakeAdmin = (user) => {
-        axios.patch(`http://localhost:5000/users/admin/${user._id}`, { role: 'admin' })
+        axios.patch(`https://food-chef-server-three.vercel.app//users/admin/${user._id}`, { role: 'admin' })
             .then(res => {
                 if(res.data.modifiedCount > 0){
                     refetch();
@@ -27,7 +27,7 @@ const AllUsers = () => {
     }
 
     const handleMakeChef = (user) => {
-        axios.patch(`http://localhost:5000/users/admin/${user._id}`, { role: 'chef' })
+        axios.patch(`https://food-chef-server-three.vercel.app//users/admin/${user._id}`, { role: 'chef' })
             .then(res => {
                 if(res.data.modifiedCount > 0){
                     refetch();

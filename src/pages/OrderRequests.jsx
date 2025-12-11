@@ -12,7 +12,7 @@ const OrderRequests = () => {
         queryKey: ['order-requests', user?.email],
         queryFn: async () => {
             // Since we are using standard axios for now, we use the full URL
-            const res = await axios.get(`http://localhost:5000/orders/chef/${user?.email}`);
+            const res = await axios.get(`https://food-chef-server-three.vercel.app//orders/chef/${user?.email}`);
             return res.data;
         },
         enabled: !!user?.email // Only run query if user email is available
@@ -20,7 +20,7 @@ const OrderRequests = () => {
 
     // 2. Handle Status Updates
     const handleStatusChange = (orderId, newStatus) => {
-        axios.patch(`http://localhost:5000/orders/status/${orderId}`, { status: newStatus })
+        axios.patch(`https://food-chef-server-three.vercel.app//orders/status/${orderId}`, { status: newStatus })
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     refetch(); // Live update the list

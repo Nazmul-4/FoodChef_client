@@ -26,7 +26,7 @@ const Register = () => {
                         }
                         
                         // Save user to database
-                        axios.post('http://localhost:5000/users', userInfo)
+                        axios.post('https://food-chef-server-three.vercel.app//users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     console.log('User added to database');
