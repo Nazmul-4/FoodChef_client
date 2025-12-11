@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import axios from "axios";
+import useAxiosSecure from "./useAxiosSecure"; // Import the new hook
 
 const useChef = () => {
     const { user, loading } = useContext(AuthContext);
-    
+    const axiosSecure = useAxiosSecure(); // Use the hook
+
     const { data: isChef = false, isLoading: isChefLoading } = useQuery({
         queryKey: ['isChef', user?.email],
-        enabled: !loading && !!user?.email, // Only query if user is logged in
+        enabled: !loading && !!user?.email,
         queryFn: async () => {
-            // Using axios is safer than fetch here
-            const res = await axios.get(`https://food-chef-server-three.vercel.app/users/chef/${user.email}`);
-            return res.data.chef; // The server returns { chef: true/false }
+            // Use axiosSecure instead of axios
+            const res = await axiosSecure.get(`/users/chef/${user.email}`);
+            return res.data.chef;
         }
     });
 

@@ -38,8 +38,23 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            
+            // --- NEW CODE STARTS HERE ---
+            if (currentUser) {
+                // 1. Get Token from Firebase
+                currentUser.getIdToken(true).then(token => {
+                    // 2. Save to LocalStorage
+                    localStorage.setItem('access-token', token);
+                    setLoading(false);
+                })
+            } else {
+                // 3. Remove Token if logged out
+                localStorage.removeItem('access-token');
+                setLoading(false);
+            }
+            // --- NEW CODE ENDS HERE ---
+            
             console.log('Current user:', currentUser);
-            setLoading(false);
         });
         return () => {
             return unsubscribe();
