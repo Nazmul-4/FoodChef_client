@@ -53,7 +53,7 @@ const Order = () => {
             confirmButtonText: 'Yes, Order!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post('https://food-chef-server-three.vercel.app//orders', orderData)
+                axios.post('https://food-chef-server-three.vercel.app/orders', orderData)
                     .then(res => {
                         // FIX #2: Check for BOTH 'insertedId' (New) AND 'modifiedCount' (Update/Merge)
                         if (res.data.insertedId || res.data.modifiedCount > 0) {

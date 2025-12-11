@@ -11,7 +11,7 @@ const useChef = () => {
         enabled: !loading && !!user?.email, // Only query if user is logged in
         queryFn: async () => {
             // Using axios is safer than fetch here
-            const res = await axios.get(`https://food-chef-server-three.vercel.app//users/chef/${user.email}`);
+            const res = await axios.get(`https://food-chef-server-three.vercel.app/users/chef/${user.email}`);
             return res.data.chef; // The server returns { chef: true/false }
         }
     });

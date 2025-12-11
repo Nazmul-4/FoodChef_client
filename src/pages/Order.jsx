@@ -56,7 +56,7 @@ const Order = () => {
             confirmButtonText: 'Yes, Place Order!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post('https://food-chef-server-three.vercel.app//orders', orderData)
+                axios.post('https://food-chef-server-three.vercel.app/orders', orderData)
                     .then(res => {
                         console.log("✅ Server Response:", res.data);
                         
